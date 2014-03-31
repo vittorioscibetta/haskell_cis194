@@ -1,5 +1,6 @@
 -- CIS 194 Homework 2
 -- LogAnalysis.hs
+
 {-# OPTIONS_GHC -Wall #-}
 module LogAnalysis where
 
