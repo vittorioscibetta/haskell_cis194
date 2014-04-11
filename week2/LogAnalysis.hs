@@ -32,4 +32,9 @@ insert message Leaf = Node Leaf message Leaf
 insert l@(LogMessage _ stamp _) (Node treeLeft m@(LogMessage _ stampmessage _) treeRight) = 
 			if stamp < stampmessage 
 		          then Node (insert l treeLeft) m treeRight 
-			  else Node treeLeft m (insert l treeRight)
+			        else Node treeLeft m (insert l treeRight)
+
+
+build :: [LogMessage] -> MessageTree
+build [] = Leaf
+build (x:xs) = insert x $ build xs
