@@ -43,3 +43,12 @@ build (x:xs) = insert x $ build xs
 inOrder :: MessageTree -> [LogMessage]
 inOrder Leaf = []
 inOrder (Node treeLeft message treeRight) = inOrder treeLeft ++ [message] ++ inOrder treeRight
+
+
+whatWentWrong :: [LogMessage] -> [String]
+whatWentWrong [] = []
+whatWentWrong (x:xs) = case x of
+                       (LogMessage (Error severity) _ msg) -> if severity > 50
+                                                              then msg : whatWentWrong xs
+                                                              else whatWentWrong xs
+                       _ -> whatWentWrong xs
