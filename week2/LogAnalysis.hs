@@ -38,3 +38,8 @@ insert l@(LogMessage _ stamp _) (Node treeLeft m@(LogMessage _ stampmessage _) t
 build :: [LogMessage] -> MessageTree
 build [] = Leaf
 build (x:xs) = insert x $ build xs
+
+
+inOrder :: MessageTree -> [LogMessage]
+inOrder Leaf = []
+inOrder (Node treeLeft message treeRight) = inOrder treeLeft ++ [message] ++ inOrder treeRight
